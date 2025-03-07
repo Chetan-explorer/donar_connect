@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DonorConnect</title>
+    <style>
+        /* Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #e74c3c;
+            color: #fff;
+            padding: 25px 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        header h1 i {
+            margin-right: 10px;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        section {
+            margin: 20px 0;
+            padding: 40px;
+            background: #7376e3;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            margin-top: 0;
+            font-size: 2em;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            background-color: #e74c3c;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #c0392b;
+        }
+
+        #city-form {
+            display: none;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #city-form label {
+            display: block;
+            margin: 15px 0 5px;
+        }
+
+        #city-form select,
+        #city-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #city-form select:focus,
+        #city-form button:focus {
+            outline: none;
+            border-color: #e74c3c;
+        }
+
+        #city-form button {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #city-form button:hover {
+            background: #c0392b;
+        }
+
+        .logout-btn {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-heartbeat"></i> DonorConnect</h1>
+            <button class="logout-btn" onclick="confirmLogout()">Logout</button>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Welcome Back to DonorConnect</h2>
+            
+            <button class="button" onclick="showCityForm()">Nearby Campaigns</button>
+            
+            <form id="city-form" action="searchCamp.php" method="POST">
+                <label for="city">Select Your City</label>
+                <select id="city" name="city" required>
+                    <option value="Yadgiri">Yadgiri</option>
+                    <option value="Tumakuru">Tumakuru</option>
+                    <option value="Ramanagara">Ramanagara</option>
+                    <option value="Mysuru">Mysuru</option>
+                    <option value="Koppala">Koppala</option>
+                    <option value="Kodagu">Kodagu</option>
+                    <option value="Hassan">Hassan</option>
+                    <option value="Gadag">Gadag</option>
+                    <option value="Davanagere">Davanagere</option>
+                    <option value="Chitradurga">Chitradurga</option>
+                    <option value="Chikkaballapura">Chikkaballapura</option>
+                    <option value="Vijayapura">Vijayapura</option>
+                    <option value="Ballary">Ballary</option>
+                    <option value="Bengaluru Rural">Bengaluru Rural</option>
+                    <option value="Raichur">Raichur</option>
+                    <option value="Bagalkote">Bagalkote</option>
+                </select>
+                <button type="submit">Search Campaigns</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        function confirmLogout() {
+            if (confirm("Are you sure you want to logout?")) {
+                window.location.href = "index.html";
+            }
+        }
+
+        function showCityForm() {
+            document.getElementById('city-form').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

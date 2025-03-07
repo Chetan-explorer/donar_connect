@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fcdfdf;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #373636;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #4a4a4a;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #29ec33;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        input[type="tel"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            border-color: #28a745;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        body {
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        #OrganisationName {
+            background-color: rgb(255, 255, 255);
+        }
+        label {
+            color: rgb(255, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Blood Bank Registration</h2>
+        <form id="signupForm" action="connectblood.php" method="POST" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="OrganisationName">Blood Bank Name: *</label>
+                <input type="text" id="OrganisationName" name="OrganisationName" pattern="[A-Za-z\s]+" title="Please enter alphabets only" required>
+            </div>
+            <div class="form-group">
+                <label for="state">State: *</label>
+                <select id="state" name="state" onchange="populateDistricts()" required>
+                    <option value="">Select State</option>
+                    <option value="State1">Andhra Pradesh</option>
+                    <option value="State2">Assam</option>
+                    <option value="State3">Bihar</option>
+                    <option value="State4">Goa</option>
+                    <option value="State5">Gujarat</option>
+                    <option value="State6">Haryana</option>
+                    <option value="State7">Karnataka</option>
+                    <option value="State8">Kerala</option>
+                    <option value="State9">Madhya Pradesh</option>
+                    <option value="State10">Maharashtra</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="district">District: *</label>
+                <select id="district" name="district" required>
+                    <option value="">Select District</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="locationLink">Location Link: *</label>
+                <input type="url" id="locationLink" name="locationLink" required>
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number: *</label>
+                <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" title="Please enter 10 digits" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail: *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password: *</label>
+                <input type="password" id="password" name="password"  pattern="[A-Za-z0-9]{10}" title="Please enter 10 digits password"required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        const districts = {
+            'State1': ['Anantapur', 'Chittoor', 'East Godavari', 'Guntur', 'Krishna', 'Kurnool', 'Prakasam', 'Sri Potti Sriramulu Nellor', 'Srikakulam', 'Visakhapatnam', 'Vizianagaram', 'West Godavari', 'YSR Kadapa'],
+            'State2': ['Baksa', 'Barpeta', 'Biswanath', 'Bongaigaon', 'Cachar', 'Charaideo', 'Chirang', 'Darrang', 'Dhemaji', 'Dhubri', 'Dibrugarh', 'Dima Hasao', 'Goalpara', 'Golaghat', 'Hailakandi', 'Hojai', 'Jorhat', 'Kamrup', 'Kamrup Metropolitan', 'Karbi Anglong', 'Karimganj', 'Kokrajhar', 'Lakhimpur', 'Majuli', 'Morigaon', 'Nagaon', 'Nalbari', 'Sivasagar', 'Sonitpur', 'South Salmara-Mankachar', 'Tinsukia', 'Udalguri', 'West Karbi Anglong'],
+            'State3': ['Araria', 'Arwal', 'Aurangabad', 'Banka', 'Begusarai', 'Bhagalpur', 'Bhojpur', 'Buxar', 'Darbhanga', 'East Champaran', 'Gaya', 'Gopalganj', 'Jamui', 'Jehanabad', 'Kaimur', 'Katihar', 'Khagaria', 'Kishanganj', 'Lakhisarai', 'Madhepura', 'Madhubani', 'Munger', 'Muzaffarpur', 'Nalanda', 'Nawada', 'Patna', 'Purnia', 'Rohtas', 'Saharsa', 'Samastipur', 'Saran', 'Sheikhpura', 'Sheohar', 'Sitamarhi', 'Siwan', 'Supaul', 'Vaishali', 'West Champaran'],
+            'State4': ['North Goa', 'South Goa'],
+            'State5': ['Ahmedabad', 'Amreli', 'Anand', 'Aravalli', 'Banaskantha', 'Bharuch', 'Bhavnagar', 'Botad', 'Chhota Udaipur', 'Dahod', 'Dang', 'Devbhoomi Dwarka', 'Gandhinagar', 'Gir Somnath', 'Jamnagar', 'Junagadh', 'Kheda', 'Kutch', 'Mahisagar', 'Mehsana', 'Morbi', 'Narmada', 'Navsari', 'Panchmahal', 'Patan', 'Porbandar', 'Rajkot', 'Sabarkantha', 'Surat', 'Surendranagar', 'Tapi', 'Vadodara', 'Valsad'],
+            'State6': ['Ambala', 'Bhiwani', 'Charkhi Dadri', 'Faridabad', 'Fatehabad', 'Gurugram', 'Hisar', 'Jhajjar', 'Jind', 'Kaithal', 'Karnal', 'Kurukshetra', 'Mahendragarh', 'Palwal', 'Panchkula', 'Panipat', 'Rewari', 'Rohtak', 'Sirsa', 'Sonipat', 'Yamunanagar'],
+            'State7': ['Bagalkot', 'Ballari', 'Belagavi', 'Bengaluru Rural', 'Bengaluru Urban', 'Bidar', 'Chamarajanagar', 'Chikkaballapur', 'Chikkamagaluru', 'Chitradurga', 'Dakshina Kannada', 'Davanagere', 'Dharwad', 'Gadag', 'Hassan', 'Haveri', 'Kalaburagi', 'Kodagu', 'Kolar', 'Koppal', 'Mandya', 'Mysuru', 'Raichur', 'Ramanagara', 'Shivamogga', 'Tumakuru', 'Udupi', 'Uttara Kannada', 'Vijayapura', 'Yadgir'],
+            'State8': ['Alappuzha', 'Ernakulam', 'Idukki', 'Kannur', 'Kasaragod', 'Kollam', 'Kottayam', 'Kozhikode', 'Malappuram', 'Palakkad', 'Pathanamthitta', 'Thiruvananthapuram', 'Thrissur', 'Wayanad'],
+            'State9': ['Agar Malwa', 'Alirajpur', 'Anuppur', 'Ashoknagar', 'Balaghat', 'Barwani', 'Betul', 'Bhind', 'Bhopal', 'Burhanpur', 'Chachaura', 'Chhatarpur', 'Chhindwara', 'Damoh', 'Datia', 'Dewas', 'Dhar', 'Dindori', 'Guna', 'Gwalior', 'Harda', 'Hoshangabad', 'Indore', 'Jabalpur', 'Jhabua', 'Katni', 'Khandwa', 'Khargone', 'Maihar', 'Mandla', 'Mandsaur', 'Morena', 'Narsinghpur', 'Neemuch', 'Niwari', 'Panna', 'Raisen', 'Rajgarh', 'Ratlam', 'Rewa', 'Sagar', 'Satna', 'Sehore', 'Seoni', 'Shahdol', 'Shajapur', 'Sheopur', 'Shivpuri', 'Sidhi', 'Singrauli', 'Tikamgarh', 'Ujjain', 'Umaria', 'Vidisha'],
+            'State10': ['Ahmednagar', 'Akola', 'Amravati', 'Aurangabad', 'Beed', 'Bhandara', 'Buldhana', 'Chandrapur', 'Dhule', 'Gadchiroli', 'Gondia', 'Hingoli', 'Jalgaon', 'Jalna', 'Kolhapur', 'Latur', 'Mumbai City', 'Mumbai Suburban', 'Nagpur', 'Nanded', 'Nandurbar', 'Nashik', 'Osmanabad', 'Palghar', 'Parbhani', 'Pune', 'Raigad', 'Ratnagiri', 'Sangli', 'Satara', 'Sindhudurg', 'Solapur', 'Thane', 'Wardha', 'Washim', 'Yavatmal']
+        };
+
+        function populateDistricts() {
+            const stateSelect = document.getElementById("state");
+            const districtSelect = document.getElementById("district");
+            const selectedState = stateSelect.value;
+
+            districtSelect.innerHTML = '<option value="">Select District</option>';
+
+            if (selectedState && districts[selectedState]) {
+                districts[selectedState].forEach(district => {
+                    const option = document.createElement("option");
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+            }
+        }
+
+        function validateForm() {
+            const orgName = document.getElementById('OrganisationName').value.trim();
+            const state = document.getElementById('state').value;
+            const district = document.getElementById('district').value;
+            const locationLink = document.getElementById('locationLink').value.trim();
+            const contactNumber = document.getElementById('contactNumber').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            // Regular expression for validating phone number (10 digits)
+            const phoneNumberRegex = /^\d{10}$/;
+
+            // Validate Blood Bank Name (alphabet characters only)
+            if (!orgName.match(/^[A-Za-z\s]+$/)) {
+                alert('Blood Bank Name should contain only alphabets and spaces.');
+                return false;
+            }
+
+            // Validate Contact Number (10 digits)
+            if (!phoneNumberRegex.test(contactNumber)) {
+                alert('Contact Number should be 10 digits.');
+                return false;
+            }
+
+            // Additional validation if needed for other fields
+
+            // Form is valid, allow submission
+            return true;
+        }
+    </script>
+</body>
+</html>

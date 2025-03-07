@@ -1,0 +1,309 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #e74c3c;
+    color: #fff;
+    padding: 25px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+header h1 i {
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f4f4f4;
+}
+
+main {
+    padding: 40px 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* text-align: left; */
+}
+
+section {
+    margin: 20px 0;
+    padding: 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    margin-top: 0;
+    font-size: 2em;
+}
+
+form label {
+    display: block;
+    margin: 15px 0 5px;
+}
+
+form input,
+form select,
+form button {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 20px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form input:focus,
+form select:focus,
+form button:focus {
+    outline: none;
+    border-color: #e74c3c;
+}
+
+form button {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+form button:hover {
+    background: #c0392b;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Home section styles */
+#home {
+    text-align: center;
+    color: #fff;
+    padding: 100px 0;
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 20px;
+}
+
+#home h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#home p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+#home button {
+    background: #fff;
+    color: #e74c3c;
+    border: 2px solid #fff;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+#home button:hover {
+    background: #e74c3c;
+    color: #fff;
+}
+
+/* body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+} */
+#emergency-btn{
+    text-decoration: none;
+}
+
+footer {
+    background: #e74c3c;
+    color: #fff;
+    padding: 40px 0;
+    margin-top: 40px;
+}
+
+footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px 20px;
+}
+
+.footer-section h3 {
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.footer-section p {
+    margin: 0 0 20px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin: 10px 0;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ddd;
+}
+
+.footer-section .social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section .social-icons a:hover {
+    color: #ddd;
+}
+
+.footer-section form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-section form input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    margin-right: -1px;
+}
+
+.footer-section form button {
+    padding: 10px 20px;
+    border: none;
+    background: #333;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.footer-section form button:hover {
+    background: #555;
+}
+
+/* Styles for the 'Know Your Blood' section */
+#know-blood {
+    margin: 20px 0;
+    padding: 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    background-color:#e2d484;
+}
+
+#know-blood .blood-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#know-blood h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#know-blood p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+#more {
+    display: none;
+}
+
+#read-more-btn {
+    display: inline-block;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+#read-more-btn:hover {
+    background: #c0392b;
+}
+
+

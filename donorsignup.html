@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Donor Sign-Up</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .signup-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            width: 400px;
+        }
+        .signup-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #d9534f;
+            font-size: 24px;
+        }
+        .signup-form label {
+            font-weight: bold;
+            color: #d9534f;
+            font-size: 14px;
+            display: block;
+            margin-top: 10px;
+        }
+        .signup-form input,
+        .signup-form select,
+        .signup-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        .signup-form input:focus,
+        .signup-form select:focus,
+        .signup-form textarea:focus {
+            border-color: #d9534f;
+            outline: none;
+        }
+        .signup-form button {
+            width: calc(50% - 5px);
+            padding: 12px;
+            background-color: #d9534f;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .signup-form button:hover {
+            background-color: #c9302c;
+        }
+        .form-step {
+            display: none;
+        }
+        .form-step-active {
+            display: block;
+        }
+        .signup-form .form-step button[type="button"] {
+            width: calc(25% - 5px);
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .signup-form .form-step .checkbox-label {
+            display: flex;
+            align-items: center;
+        }
+        .signup-form .form-step .checkbox-label input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="signup-form">
+    <h2>Donor Sign-Up</h2>
+    <form id="signupForm" action="connectdonor.php" method="post" onsubmit="return validateForm()">
+        <!-- Step 1 -->
+        <div class="form-step form-step-active">
+            <label for="name">Name:*</label>
+            <input type="text" id="name" name="name"  title="Name should contain only alphabets and start with capital" required>
+
+            <label for="password">Password:*</label>
+            <input type="password" id="password" name="password" pattern="(?=.*[A-Z])(?=.*[a-z0-9])(?=.*[@#$%*&!]).{10,}" title="Password must be at least 10 characters long, contain at least one uppercase letter, one lowercase letter, and one special character (@#$%*&!)." required>
+
+
+            <label for="email">Email:*</label>
+            <input type="email" id="email" name="email" pattern="[A-Za-z0-9]+@gmail.com" title="Enter correct email with consist of @gmail.com"   required>
+
+            <label for="phone">Phone Number:*</label>
+            <input type="text" id="phone" name="phone" pattern="\d{10}" title="Phone number should be 10 digits" required>
+
+            <label for="age">Age:*</label>
+            <input type="number" id="age" name="age" min="18" max="65" required>
+
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step">
+            <label for="state">State:*</label>
+            <select id="state" name="state" required>
+                <option value="">Select State</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="karnataka">Karnataka</option>
+                <option value="tamil-nadu">Tamil Nadu</option>
+                <option value="andhra-pradesh">Andhra Pradesh</option>
+            </select>
+
+            <label for="district">District:*</label>
+            <select id="district" name="district" required>
+                <option value="">Select District</option>
+            </select>
+
+            <label for="pincode">Pincode:</label>
+            <input type="text" id="pincode" name="pincode" pattern="\d{6}" title="Pincode should be 6 digits">
+
+            <label for="weight">Weight:</label>
+            <input type="text" id="weight" name="weight" pattern="\d+" title="Weight should be a number">
+
+            <div class="form-group">
+                <label for="bloodType">Blood Type:</label>
+                <select id="bloodType" name="bloodType" required>
+                    <option value="" disabled selected>Select your blood type</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+
+            <label for="health_issues">Health Issues:*</label>
+            <textarea id="health_issues" name="health_issues" rows="3" required></textarea>
+
+            <div class="checkbox-label">
+                <input type="checkbox" id="nonsmoker" name="nonsmoker" required>
+                <label for="nonsmoker">I am not a smoker</label>
+            </div>
+
+            <div class="checkbox-label">
+                <input type="checkbox" id="nondrinker" name="nondrinker" required>
+                <label for="nondrinker">I am not a drinker</label>
+            </div>
+
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="submit">Submit</button>
+        </div>
+    </form> 
+</div>
+
+<script>
+    let currentStep = 0;
+    const formSteps = document.querySelectorAll('.form-step');
+
+    function nextStep() {
+        if (validateCurrentStep()) {
+            formSteps[currentStep].classList.remove('form-step-active');
+            currentStep++;
+            formSteps[currentStep].classList.add('form-step-active');
+        }
+    }
+
+    function prevStep() {
+        formSteps[currentStep].classList.remove('form-step-active');
+        currentStep--;
+        formSteps[currentStep].classList.add('form-step-active');
+    }
+
+    function validateCurrentStep() {
+        const inputs = formSteps[currentStep].querySelectorAll('input, select, textarea');
+        for (const input of inputs) {
+            if (!input.checkValidity()) {
+                input.reportValidity();
+                return false;
+            }
+        }
+        return true;
+    }
+
+    document.getElementById('state').addEventListener('change', function() {
+        var state = this.value;
+        var districtSelect = document.getElementById('district');
+        districtSelect.innerHTML = '<option value="">Select District</option>';
+
+        if (state === 'maharashtra') {
+            districtSelect.innerHTML += '<option value="mumbai">Mumbai</option>';
+            districtSelect.innerHTML += '<option value="pune">Pune</option>';
+            // Add more districts
+        } else if (state === 'karnataka') {
+            districtSelect.innerHTML += '<option value="bengaluru-urban">Bengaluru Urban</option>';
+            districtSelect.innerHTML += '<option value="belagavi">Belagavi</option>';
+            districtSelect.innerHTML += '<option value="bidar">Bidar</option>';
+            districtSelect.innerHTML += '<option value="chamarajanagara">Chamarajanagara</option>';
+            districtSelect.innerHTML += '<option value="chikkamagaluru">Chikkamagaluru</option>';
+            districtSelect.innerHTML += '<option value="dakshina-kannada">Dakshina Kannada</option>';
+            districtSelect.innerHTML += '<option value="dharwad">Dharwad</option>';
+            districtSelect.innerHTML += '<option value="kalaburagi">Kalaburagi</option>';
+            districtSelect.innerHTML += '<option value="haveri">Haveri</option>';
+            districtSelect.innerHTML += '<option value="kolara">Kolara</option>';
+            districtSelect.innerHTML += '<option value="mandya">Mandya</option>';
+            districtSelect.innerHTML += '<option value="raichur">Raichur</option>';
+            districtSelect.innerHTML += '<option value="shivamogga">Shivamogga</option>';
+            districtSelect.innerHTML += '<option value="udupi">Udupi</option>';
+            districtSelect.innerHTML += '<option value="vijayanagara">Vijayanagara</option>';
+            districtSelect.innerHTML += '<option value="uttara-kannada">Uttara Kannada</option>';
+            districtSelect.innerHTML += '<option value="yadgiri">Yadgiri</option>';
+            districtSelect.innerHTML += '<option value="tumakuru">Tumakuru</option>';
+            districtSelect.innerHTML += '<option value="ramanagara">Ramanagara</option>';
+            districtSelect.innerHTML += '<option value="mysuru">Mysuru</option>';
+            districtSelect.innerHTML += '<option value="koppala">Koppala</option>';
+            districtSelect.innerHTML += '<option value="kodagu">Kodagu</option>';
+            districtSelect.innerHTML += '<option value="hassan">Hassan</option>';
+            districtSelect.innerHTML += '<option value="gadag">Gadag</option>';
+            districtSelect.innerHTML += '<option value="ballari">Ballari</option>';
+            districtSelect.innerHTML += '<option value="bengaluru-rural">Bengaluru Rural</option>';
+            districtSelect.innerHTML += '<option value="bagalkot">Bagalkot</option>';
+        } else if (state === 'tamil-nadu') {
+            districtSelect.innerHTML += '<option value="chennai">Chennai</option>';
+            districtSelect.innerHTML += '<option value="coimbatore">Coimbatore</option>';
+            districtSelect.innerHTML += '<option value="madurai">Madurai</option>';
+            // Add more districts
+        } else if (state === 'andhra-pradesh') {
+            districtSelect.innerHTML += '<option value="visakhapatnam">Visakhapatnam</option>';
+            districtSelect.innerHTML += '<option value="vijayawada">Vijayawada</option>';
+            // Add more districts
+        }
+    });
+
+    function validateForm() {
+        return validateCurrentStep();
+    }
+</script>
+
+<script>
+    function redirectToLogin1() {
+        window.location.href = 'donorpage.html';
+    }
+</script>    
+
+</body>
+</html>

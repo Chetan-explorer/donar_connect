@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+   font-family: 'Roboto', sans-serif;
+   margin: 0;
+   padding: 0;
+   background-color: #f4f4f4;
+   color: #333;
+}
+
+header {
+   background: #e74c3c;
+   color: #fff;
+   padding: 25px 0;
+}
+
+header .container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+header h1 {
+   margin: 0;
+   font-size: 1.5em;
+}
+
+header h1 i {
+   margin-right: 10px;
+}
+
+nav ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   display: flex;
+}
+
+nav ul li {
+   margin-left: 20px;
+}
+
+nav ul li a {
+   color: #fff;
+   text-decoration: none;
+   font-weight: 500;
+   transition: color 0.3s;
+}
+
+nav ul li a:hover {
+   color: #f4f4f4;
+}
+
+main {
+   padding: 40px 0;
+}
+
+.container {
+   width: 80%;
+   max-width: 1200px;
+   margin: 0 auto;
+}
+
+section {
+   margin: 20px 0;
+   padding: 40px;
+   background: #7376e3;
+   border-radius: 10px;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+   margin-top: 0;
+   font-size: 2em;
+}
+
+form label {
+   display: block;
+   margin: 15px 0 5px;
+}
+
+form input,
+form select,
+form button {
+   width: 100%;
+   padding: 15px;
+   margin: 5px 0 20px;
+   font-size: 1em;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+}
+
+form input:focus,
+form select:focus,
+form button:focus {
+   outline: none;
+   border-color: #e74c3c;
+}
+
+form button {
+   background: #e74c3c;
+   color: #fff;
+   border: none;
+   cursor: pointer;
+   transition: background 0.3s;
+}
+
+form button:hover {
+   background: #c0392b;
+}
+
+h1 {
+   color: #000000;
+   text-shadow: 2px 2px 4px rgba(54, 38, 38, 0.2);
+   animation: fadeIn 2s ease-in-out;
+}
+
+select, button {
+   padding: 10px;
+   margin: 10px;
+   border-radius: 10px;
+   border: 2px solid #fff;
+   background-color: #fff;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+select:hover, button:hover {
+   background-color: #f0f0f0;
+   transform: scale(1.05);
+}
+
+.info {
+   background:#e2d484;
+   padding: 20px;
+   border-radius: 15px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+   max-width: 600px;
+   margin-top: 20px;
+   animation: fadeIn 1s ease-in-out;
+}
+
+.info h2 {
+   color: #ff6f61;
+}
+
+.info p {
+   font-size: 16px;
+   line-height: 1.6;
+}
+
+.info strong {
+   color: #ff6f61;
+}
+
+@keyframes pulse {
+   0% { box-shadow: 0 0 0 0 rgba(255, 111, 97, 0.7); }
+   70% { box-shadow: 0 0 0 10px rgba(255, 111, 97, 0); }
+   100% { box-shadow: 0 0 0 0 rgba(255, 111, 97, 0); }
+}
+
+button {
+   animation: pulse 2s infinite;
+}
+
+.content-container {
+   background: #e2d484;
+   padding: 30px;
+   border-radius: 15px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+   max-width: 600px;
+   margin: 20px;
+   animation: fadeIn 1s ease-in-out;
+}
+
+.login .h2 {
+   color: #ff6f61;
+   text-align: left;
+   margin-bottom: 20px;
+}
+
+p {
+   font-size: 16px;
+   line-height: 1.6;
+   margin: 10px 0;
+}
+
+p strong {
+   color: #ff6f61;
+}
+
+@keyframes fadeIn {
+   from {
+       opacity: 0;
+       transform: translateY(20px);
+   }
+   to {
+       opacity: 1;
+       transform: translateY(0);
+   }
+}
+
+#myths-facts {
+   margin: 20px 0;
+   padding: 40px;
+   background: #fff;
+   border-radius: 10px;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+   text-align: left;
+   background-color: #d76b5f;
+}
+
+#myths-facts .content-container {
+   max-width: 800px;
+   margin: 0 auto;
+}
+
+#myths-facts h2 {
+   text-align:left;
+   font-size: 2em;
+   margin-bottom: 20px;
+}
+
+#myths-facts p {
+   font-size: 1.2em;
+   line-height: 1.6;
+}
+
+#more {
+   display: none;
+}
+
+#read-more-btn1 {
+   display: inline-block;
+   background: #e74c3c;
+   color: #fff;
+   border: none;
+   padding: 10px 20px;
+   font-size: 1em;
+   cursor: pointer;
+   transition: background 0.3s;
+   margin-top: 20px;
+   border-radius: 5px;
+}
+
+#read-more-btn1:hover {
+   background: #c0392b;
+}
+
+#login{
+   background-color: #d76b5f;
+}
+</style>
+   <script>
+       function confirmLogout() {
+           if (confirm("Are you sure you want to log out?")) {
+               window.location.href = "index.html";
+           }
+       }
+   </script>
+</head>
+<body>
+   <header>
+       <div class="container">
+           <h1><i class="fas fa-heartbeat"></i> DonorConnect</h1>
+           <button onclick="confirmLogout()" style="margin-left:auto; background-color: #fff; color: #e74c3c; border: 1px solid #e74c3c; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Logout</button>
+       </div>
+   </header>
+   <section id="home">
+       <div class="container">
+           <h2>Welcome Back to DonorConnect</h2>
+           <button onclick="window.location.href='#signup'">Details</button>
+           <button onclick="window.location.href='campaign.html'">Run a Campaign</button>
+       </div>
+   </section>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Chatbot Integration</title>
+</head>
+<body>
+    <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Ask something..." required>
+        <button type="submit">Send</button>
+    </form>
+    <div id="response"></div>
+
+    <script>
+        document.getElementById('chat-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userInput = document.getElementById('user-input').value;
+            
+            // Send the user input to the PHP backend script
+            const response = await fetch('chatbot.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: userInput })
+            });
+
+            // Process and display the response
+            const result = await response.text();
+            document.getElementById('response').innerText = result;
+        });
+    </script>
+</body>
+</html>

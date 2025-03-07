@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+      <link rel="stylesheet" href="login.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login-box {
+      background-color: #fff;
+      padding: 150px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 93%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    #userType {
+    width: 200px; /* Adjust the width as needed */
+    padding: 10px; /* Adjust the padding as needed */
+    font-size: 16px; /* Adjust the font size as needed */
+    border: 1px solid #ccc; /* Adjust the border style as needed */
+    border-radius: 5px; /* Adjust the border radius as needed */
+    background-color: #f9f9f9; /* Adjust the background color as needed */
+    color: #333; /* Adjust the text color as needed */
+    margin-top: 5px; /* Add some space above the select element */
+}
+
+/* Styling the option elements */
+#userType option {
+    padding: 10px; /* Adjust the padding as needed */
+    background-color: #fff; /* Adjust the background color as needed */
+    color: #333; /* Adjust the text color as needed */
+}
+
+/* Add some hover effect to the select element */
+#userType:hover {
+    border-color: #888; /* Change the border color on hover */
+    background-color: #f1f1f1; /* Change the background color on hover */
+}
+
+/* Add some focus effect to the select element */
+#userType:focus {
+    border-color: #555; /* Change the border color on focus */
+    background-color: #fff; /* Change the background color on focus */
+    outline: none; /* Remove the default outline */
+}
+  </style>
+</head>
+<body style="background-image: url('save.jpg');">
+
+<div class="container">
+  <div class="login-box">
+    <h2>Login</h2>
+    <form action="login.php" method="POST" id="userForm">
+      <div class="form-group">
+        <label for="userUsername">Username</label>
+        <input type="text" id="userUsername" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="userPassword">Password</label>
+        <input type="password" id="userPassword" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="userPassword">Login type</label>
+        <select id="userType" name="loginType" required>
+          <option value="Donor">Donor</option>
+          <option value="Organization">Organization</option>
+          <option value="Blood bank">Blood bank</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Login ">
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

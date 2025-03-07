@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Platform</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Blood Donation Platform</h1>
+        </header>
+        
+        <main>
+            <!-- Emergency Request Section -->
+            <section class="emergency-section">
+                <h2> Blood Request</h2>
+                <form id="emergency-form" action="search.php" method="post" onsubmit="return validateEmergencyForm()">
+                    <div class="form-group">
+                        <label for="patientName">Patient Name:</label>
+                        <input type="text" id="patientName" name="patientName" pattern="[A-Za-z ]+" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactNumber">Contact Number:</label>
+                        <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]+" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bloodType">Blood Type:</label>
+                        <select id="bloodType" name="bloodType" required>
+                            <option value="" disabled selected>Select your blood type</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hospital">Hospital Name:</label>
+                        <input type="text" id="hospital" name="hospital" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State:</label>
+                        <select id="state" name="state" required>
+                            <option value="" disabled selected>Select your state</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="district">District:</label>
+                        <select id="district" name="district" required>
+                            <option value="" disabled selected>Select your district</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pincode">Pincode:</label>
+                        <input type="text" id="pincode" name="pincode" pattern="[0-9]{5,6}" required>
+                    </div>
+                    <button type="submit">Submit Request</button>
+                </form>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2024 Blood Donation Platform. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const stateDistrictMap = {
+            'Maharashtra': ['Mumbai', 'Pune', 'Nagpur', 'Thane'],
+            'Karnataka': [
+                'Bengaluru Urban', 'Belagavi', 'Bidar', 'Chamarajanagara', 'Chikkamagaluru', 'Dakshina Kannada', 
+                'Dharwad', 'Kalaburagi', 'Haveri', 'Kolara', 'Mandya', 'Raichur', 'Shivamogga', 'Udupi', 
+                'Vijayanagara', 'Uttara Kannada', 'Yadgiri', 'Tumakuru', 'Ramanagara', 'Mysuru', 'Koppala', 
+                'Kodagu', 'Hassan', 'Gadag', 'Davanagere', 'Chitradurga', 'Chikkaballapura', 'Vijayapura', 
+                'Ballary', 'Bengaluru Rural', 'bagalkot'
+            ],
+            'Tamil Nadu': ['Chennai', 'Coimbatore', 'Madurai', 'Salem'],
+            'Andhra Pradesh': ['Visakhapatnam', 'Vijayawada', 'Guntur', 'Nellore'],
+        };
+
+        document.getElementById('state').addEventListener('change', function() {
+            const state = this.value;
+            const districtSelect = document.getElementById('district');
+            districtSelect.innerHTML = '<option value="" disabled selected>Select your district</option>';
+            
+            if (state in stateDistrictMap) {
+                stateDistrictMap[state].forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+            }
+        });
+
+        function validateEmergencyForm() {
+            const form = document.getElementById('emergency-form');
+            const fields = form.querySelectorAll('input, select');
+            for (let field of fields) {
+                if (!field.checkValidity()) {
+                    alert('Please fill out all required fields correctly.');
+                    return false;
+                }
+            }
+            alert('Emergency request submitted successfully!');
+            return true;
+        }
+    </script>
+</body>
+</html>

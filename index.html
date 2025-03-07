@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Connect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles1.css">
+    <style>
+    h1 {
+        color: #000100;
+        text-shadow: 2px 2px 4px rgba(54, 38, 38, 0.2);
+        animation: fadeIn 2s ease-in-out;
+    }
+    
+    select, button {
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        border: 2px solid #fff;
+        background-color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    
+    select:hover, button:hover {
+        background-color: #f0f0f0;
+        transform: scale(1.05);
+    }
+    
+    .info {
+        background:#e2d484;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin-top: 20px;
+        animation: fadeIn 1s ease-in-out;
+    }
+    
+    .info h2 {
+        color: #ff6f61;
+    }
+    
+    .info p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    .info strong {
+        color: #ff6f61;
+    }
+    
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(255, 111, 97, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(255, 111, 97, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 111, 97, 0); }
+    }
+    
+    button {
+        animation: pulse 2s infinite;
+    }
+    
+    .content-container {
+            background: #e2d484;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+     .login .h2 {
+            color: #ff6f61;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        p strong {
+            color: #ff6f61;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #myths-facts {
+    margin: 20px 0;
+    padding: 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    background-color: #d76b5f;
+}
+
+#myths-facts .content-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#myths-facts h2 {
+    text-align:left;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#myths-facts p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+#more {
+    display: none;
+}
+
+#read-more-btn1 {
+    display: inline-block;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+#read-more-btn1:hover {
+    background: #c0392b;
+}
+#login{
+    background-color: #d76b5f;
+}
+#emergency-btn{
+    text-decoration: none;
+}
+</style>
+</head>
+<body>
+    <!-- <div class="preloader">
+        <div class="loader">
+            <div class="loader-outter"></div>
+            <div class="loader-inner"></div>
+
+            <div class="indicator"> 
+                <svg width="16px" height="12px">
+                    <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                    <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                </svg>
+            </div>
+        </div>
+        </div> -->
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-heartbeat"></i> DonorConnect</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <!-- <li><a href="gm.html">About us</a></li> -->
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="#contact">Contact us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="home" style="background-image:url(homepage.jpg); background-size: cover; background-repeat: no-repeat;">
+            <div class="container">
+                <h2>Welcome to DonorConnect</h2>
+                <p>Connecting blood donors with those in need</p>
+                <h2>Get Started as:</h2>
+                <button onclick="window.location.href='donorsignup.html'">Become Donor</button>
+                <button onclick="window.location.href='org.html'">Organisation</button>
+                <button onclick="window.location.href='bloodbank.html'">Blood bank</button>
+                <button onclick="window.location.href='emerg.html'">User</button>
+            </div>
+        </section>
+        <section id="login">
+            <div class="container">
+                <img src="blood symbol.jpg" height="30px" width="30px"><h2>INFO</h2>
+                
+                <section id="know-blood">
+                    
+                    <div class="container">
+                       
+                        <div class="blood-content">
+                            <h2>Know Your Blood</h2>
+                            <p>
+                                Blood is a vital fluid in humans and many animals that delivers necessary substances such as nutrients and oxygen to the cells and transports metabolic waste products away from those same cells. It is composed of several key components, each with specific functions essential for life.
+                                <span id="dots">...</span>
+                                <span id="more">
+                                    The primary components of blood include red blood cells, white blood cells, platelets, and plasma. Red blood cells (erythrocytes) are the most abundant cells in blood and are responsible for transporting oxygen from the lungs to the body's tissues and returning carbon dioxide from the tissues to the lungs for exhalation. They contain hemoglobin, a protein that binds to oxygen and gives blood its red color.<br><br>
+                                    White blood cells (leukocytes) are part of the immune system and are crucial in defending the body against infection and disease. There are several types of white blood cells, each with specialized roles, including neutrophils, lymphocytes, monocytes, eosinophils, and basophils. These cells identify and destroy pathogens, such as bacteria and viruses, and are involved in the inflammatory response.<br><br>
+                                    Platelets (thrombocytes) are small cell fragments that play a key role in blood clotting. When a blood vessel is injured, platelets aggregate at the site of injury, forming a temporary plug to prevent further blood loss. They also release chemicals that help to solidify the plug into a stable clot, facilitating the wound-healing process.<br><br>
+                                    Plasma, the liquid component of blood, makes up about 55% of its volume. It is a pale yellow fluid composed mainly of water, but it also contains proteins, electrolytes, hormones, and waste products. Plasma serves as the medium for transporting nutrients, hormones, and proteins throughout the body. It also helps to maintain blood pressure and regulate body temperature.<br><br>
+                                    In addition to these components, blood has various functions, including regulation of pH, body temperature, and fluid balance. It also plays a role in protecting the body through the immune response and by clotting to prevent excessive bleeding. Blood circulates through the body via the cardiovascular system, driven by the pumping action of the heart, ensuring that all tissues receive the necessary substances for proper function and survival.
+                                </span>
+                            </p>
+                            <button onclick="toggleReadMore()" id="read-more-btn">Read More</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+        <section id="login">
+            <div class="container">
+                <img src="knowyb.jpg" height="30px" width="30px">
+                <h2>Known your Blood</h2>
+                <h1>Select Your Blood Group</h1>
+                <select id="bloodGroup">
+                    <option value="">--Choose Blood Group--</option>
+                    <option value="O-">O-</option>
+                    <option value="O+">O+</option>
+                    <option value="A-">A-</option>
+                    <option value="A+">A+</option>
+                    <option value="B-">B-</option>
+                    <option value="B+">B+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="AB+">AB+</option>
+                </select>
+                <button onclick="showInfo()">Show Information</button>
+                <div class="info" id="infoBox"></div>
+                <script>
+                    const info = {
+                        "O-": `
+                            <h2>O-</h2>
+                            <p><strong>🩸 Universal Donor:</strong> Can donate blood to any blood type.</p>
+                            <p><strong>🌍 Widespread:</strong> Approximately 6.6% of the global population.</p>
+                            <p><strong>🚨 Emergency Use:</strong> Often used in emergencies when the blood type is unknown.</p>
+                        `,
+                        "O+": `
+                            <h2>O+</h2>
+                            <p><strong>🩸 Common Donor:</strong> Can donate to any positive blood type (O+, A+, B+, AB+).</p>
+                            <p><strong>🌍 Widespread:</strong> Approximately 37.4% of the global population.</p>
+                            <p><strong>🔥 High Demand:</strong> Most common blood type, making it highly needed for transfusions.</p>
+                        `,
+                        "A-": `
+                            <h2>A-</h2>
+                            <p><strong>🩸 Who can donate?:</strong> Can donate to A-, A+, AB-, AB+.</p>
+                            <p><strong>🔄 Receives From:</strong> O- and A-.</p>
+                            <p><strong>🌍 Widespread:</strong> Approximately 6.3% of the global population.</p>
+                            <p><strong>📈 Demand:</strong> Often in demand due to the limited number of donors.</p>
+                        `,
+                        "A+": `
+                            <h2>A+</h2>
+                            <p><strong>🩸 Who can donate?:</strong> Can donate to A+ and AB+.</p>
+                            <p><strong>🔄 Receives From:</strong> O-, O+, A-, A+.</p>
+                            <p><strong>🌍 Widespread:</strong> Approximately 28.3% of the global population.</p>
+                            <p><strong>🔄 Versatile:</strong> One of the most common blood types, versatile in donation and transfusion.</p>
+                        `,
+                        "B-": `
+                            <h2>B-</h2>
+                            <p><strong>🩸 Who can donate?:</strong> Can donate to B-, B+, AB-, AB+.</p>
+                            <p><strong>🔄 Receives From:</strong> O- and B-.</p>
+                            <p><strong>🌍 Widespread:</strong> Approximately 1.5% of the global population.</p>
+                            <p><strong>🌟 Rarity:</strong> Rare, making donations particularly valuable.</p>
+                        `,
+                        "B+": `
+                            <h2>B+</h2>
+                            <p><strong>🩸 Who can donate?:</strong> Can donate to B+ and AB+.</p>
+                            <p><strong>🔄 Receives From:</strong> O-, O+, B-, B+.</p>
+                            <p><strong>🌍 Widespread:</strong> Approximately 8.5% of the global population.</p>
+                            <p><strong>🗺 Usage:</strong> Common in certain regions, making it crucial for regional blood banks.</p>
+                        `,
+                        "AB-": `
+                            <h2>AB-</h2>
+                            <p><strong>🩸 Who can donate?:</strong> Can donate to AB- and AB+.</p>
+                            <p><strong>🔄 Receives From:</strong> O-, A-, B-, AB-.</p>
+                            <p><strong>🌍 Widespread:</strong> Approximately 0.6% of the global population.</p>
+                            <p><strong>💧 Universal Plasma Donor:</strong> Plasma can be given to any blood type.</p>
+                        `,
+                        "AB+": `
+                            <h2>AB+</h2>
+                            <p><strong>🩸 Universal Recipient:</strong> Can receive blood from any blood type.</p>
+                            <p><strong>🔄 Who can donate?:</strong> Can donate to AB+ only.</p>
+                            <p><strong>🌍 Widespread:</strong> Approximately 3.4% of the global population.</p>
+                            <p><strong>💧 Universal Plasma Recipient:</strong> Can receive plasma from any blood type.</p>
+                        `
+                    };
+                    function showInfo() {
+            const bloodGroup = document.getElementById("bloodGroup").value;
+            const infoBox = document.getElementById("infoBox");
+            if (info[bloodGroup]) {
+                infoBox.innerHTML = info[bloodGroup];
+            } else {
+                infoBox.innerHTML = "<p>Please select a valid blood group.</p>";
+            }
+        }
+    </script>
+</div>
+        </section>
+
+        <section id="myths-facts">
+            <div class="container">
+                <img src="facts.jpg" height="30px" width="30px">
+                <h2>Myths and Facts</h2>
+                
+                <div class="content-container">
+                    <h2>BELIEFS AND FACTS ABOUT BLOOD DONATION</h2>
+                    <p><strong>Myth:</strong> Donating is painful and involves a long recovery.</p>
+                    <p><strong>Fact:</strong> It is not painful. The pain experienced is only of the needle prick. There is no pain during transfusion.</p>
+                        <p><strong>Myth:</strong> Donating is dangerous and weakens the donor.</p>
+                        <p><strong>Fact:</strong> Only 350 ml out of 5 liters of blood available in the body is taken. Hence it is not dangerous at all. The donor may feel a bit weak immediately after the donation, but recovers completely within a few hours. As donated blood is replenished with fresh blood, it is advantageous to donate blood.</p>
+                        <p><strong>Myth:</strong> Being a vegetarian means that the blood does not have enough iron and cannot be donated.</p>
+                        <p><strong>Fact:</strong> A vegetarian can donate blood like any non-vegetarian. The iron needed is taken from body stores and is replaced through normal vegetarian diet which takes a few weeks, so also for non-vegetarians.</p>
+                        <p><strong>Myth:</strong> You cannot take part in sports or other physical activities after donating blood.</p>
+                        <p><strong>Fact:</strong> Giving blood does not interfere with ability to perform physically. It is advised to avoid heavy weightlifting or strenuous workouts for the rest of the day after the donation. You can get back on track the next day.</p>  
+                </div>
+            </div>
+        </section>
+        <!-- <section id="login">
+            <div class="container">
+                <h2>Login</h2>
+                <form action="/login" method="post">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </section> -->
+        
+        <!-- <section id="signup">
+            <div class="container">
+                <h2>Sign Up</h2>
+                <form action="/signup" method="post">
+                    <label for="level">Sign Up As:</label>
+                    <select id="level" name="level">
+                        <option value="donor">Donor</option>
+                        <option value="needer">Needer</option>
+                        <option value="hospital">Hospital</option>
+                    </select>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </section> -->
+    </main>
+</body>
+<script>
+    function toggleReadMore() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("read-more-btn");
+    
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read More";
+            moreText.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Read Less";
+            moreText.style.display = "inline";
+        }
+    }
+</script>
+<footer>
+    
+    <div class="container">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <p>Lorem ipsum dolor sit am consectetur adipisicing elit do eiusmod tempor incididunt ut labore dolore magna.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-google"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-vimeo"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Our Cases</a></li>
+                <li><a href="#">Other Links</a></li>
+                <li><a href="#">Consulting</a></li>
+                <li><a href="#">Finance</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li id="contact"><a href="tel:6363078337">Call us at +91-6363078337</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Open Hours</h3>
+            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit do eiusmod tempor incididunt.</p>
+            <ul>
+                <li>Monday - Friday: 8.00 - 20.00</li>
+                <li>Saturday: 9.00 - 18.30</li>
+                <li>Monday - Thursday: 9.00 - 15.00</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter to get all our news in your inbox. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <form>
+                <input type="email" placeholder="Email Address">
+                <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <p>&copy; 2024 Donor Connect. All rights reserved.</p>
+    </div>
+</footer>
+</html>

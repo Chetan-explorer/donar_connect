@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organisation Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="password"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Organisation Sign Up</h2>
+        <form action="connectorg.php" method="post">
+            <div class="form-group">
+                <label for="OrganisationName">Organisation Name :*</label>
+                <input type="text" id="OrganisationName" name="OrganisationName" maxlength="100" pattern="[A-Za-z\s]+" title="Only alphabets and spaces are allowed" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password :*</label>
+                <input type="password" id="password" name="password" minlength="8" required>
+            </div>
+            <div class="form-group">
+                <label for="state">State :*</label>
+                <select id="state" name="state" onchange="populateDistricts()" required>
+                    <option value="">Select State</option>
+                    <option value="State1">Andhra Pradesh</option>
+                    <option value="State2">Assam</option>
+                    <option value="State3">Bihar</option>
+                    <option value="State4">Chhattisgarh</option>
+                    <option value="State5">Goa</option>
+                    <option value="State6">Gujarat</option>
+                    <option value="State7">Haryana</option>
+                    <option value="State8">Jharkhand</option>
+                    <option value="State9">Karnataka</option>
+                    <option value="State10">Kerala</option>
+                    <option value="State11">Madhya Pradesh</option>
+                    <option value="State12">Maharashtra</option>
+                    <option value="State13">Odisha</option>
+                    <option value="State14">Punjab</option>
+                    <option value="State15">Rajasthan</option>
+               </select>
+            </div>
+            <div class="form-group">
+                <label for="district">District :*</label>
+                <select id="district" name="district" required>
+                    <option value="">Select District</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="organisationType">Organisation Type :*</label>
+                <select id="organisationType" name="organisationType" required>
+                    <option value="">Select Organisation Type</option>
+                    <option value="Hospital">Hospital</option>
+                    <option value="College">College</option>
+                    <option value="NGO">NGO</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="locationLink">Location Link :*</label>
+                <input type="url" id="locationLink" name="locationLink" required>
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number :*</label>
+                <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" title="Please enter a 10-digit phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="pincode">Pin Code :*</label>
+                <input type="text" id="pincode" name="pincode" pattern="[1-9][0-9]{5}" title="Please enter a valid 6-digit pin code that does not start with 0" required maxlength="6">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail :*</label>
+                <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        const districts = {
+            'State1': ['Anantapur', 'Chittoor', 'East Godavari', 'Guntur', 'Krishna', 'Kurnool', 'Prakasam', 'Sri Potti Sriramulu Nellor', 'Srikakulam', 'Visakhapatnam', 'Vizianagaram', 'West Godavari', 'YSR Kadapa'],
+            'State2': ['Baksa','Barpeta', 'Biswanath', 'Bongaigaon', 'Cachar', 'Charaideo', 'Chirang', 'Darrang', 'Dhemaji', 'Dhubri','Dibrugarh','Dima Hasao', 'Goalpara', 'Golaghat', 'Hailakandi', 'Hojai', 'Jorhat', 'Kamrup', 'Kamrup Metropolitan', 'Karbi Anglong','Karimganj','Kokrajhar', 'Lakhimpur', 'Majuli', 'Morigaon', 'Nagaon', 'Nalbari', 'Sivasagar', 'Sonitpur', 'South Salmara-Mankachar','Tinsukia','Udalguri','West Karbi Anglong' ],
+            'State3': ['Araria', 'Arwal', 'Aurangabad', 'Banka', 'Begusarai', 'Bhagalpur', 'Bhojpur', 'Buxar', 'Darbhanga', 'East Champaran', 'Gaya', 'Gopalganj', 'Jamui', 'Jehanabad', 'Kaimur', 'Katihar', 'Khagaria', 'Kishanganj', 'Lakhisarai', 'Madhepura','Madhubani', 'Munger', 'Muzaffarpur', 'Nalanda', 'Nawada', 'Patna', 'Purnia', 'Rohtas', 'Saharsa', 'Samastipur','Saran','Sheikhpura','Sheohar','Sitamarhi','Siwan','Supaul','Vaishali','West Champaran'],
+            'State4': ['Balod','Baloda Bazar', 'Balrampur', 'Bastar', 'Bemetara', 'Bijapur', 'Bilaspur', 'Dantewada', 'Dhamtari', 'Durg', 'Gariaband','Gaurela-Pendra-Marwahi', 'Janjgir-Champa', 'Jashpur', 'Kabirdham', 'Kanker', 'Kondagaon', 'Korba', 'Koriya', 'Mahasamund', 'Mungeli','Narayanpur', 'Raigarh', 'Raipur', 'Rajnandgaon', 'Sukma', 'Surajpur', 'Surguja'],
+            'State5': ['North Goa', 'South Goa'],
+            'State6': ['Ahmedabad','Amreli', 'Anand', 'Aravalli','Banaskantha', 'Bharuch', 'Bhavnagar', 'Botad', 'Chhota Udaipur', 'Dahod', 'Dang', 'Devbhoomi Dwarka', 'Gandhinagar', 'Gir Somnath','Jamnagar', 'Junagadh', 'Kheda', 'Kutch', 'Mahisagar', 'Mehsana', 'Morbi', 'Narmada', 'Navsari', 'Panchmahal','Patan', 'Porbandar', 'Rajkot', 'Sabarkantha', 'Surat', 'Surendranagar', 'Tapi', 'Vadodara', 'Valsad'],
+            'State7': ['Ambala', 'Bhiwani', 'Charkhi Dadri','Faridabad','Fatehabad', 'Gurugram', 'Hisar','Jhajjar', 'Jind', 'Kaithal', 'Karnal', 'Kurukshetra', 'Mahendragarh', 'Palwal', 'Panchkula', 'Panipat', 'Rewari','Rohtak', 'Sirsa', 'Sonipat', 'Yamunanagar'],
+            'State8': ['Bokaro', 'Chatra', 'Deoghar','Dhanbad','Dumka', 'East Singhbhum', 'Garhwa','Giridih', 'Godda', 'Gumla', 'Hazaribagh', 'Jamtara', 'Khunti', 'Koderma', 'Latehar','Lohardaga','Pakur','Palamu','Ramgarh','Ranchi','Sahebganj','Seraikela Kharsawan','Simdega','West Singhbhum'],
+            'State9': ['Bagalkote', 'Ballari', 'Belagavi','Bengaluru Rural','Bengaluru Urban','Bidar','Chamarajanagara','Chikkaballapur','Chikkamagaluru','Chitradurga','Dakshina Kannada','Davanagere','Dharwad','Gadag','Hassan','Haveri','Kalaburagi','Kodagu','Kolar','Koppal','Mandya','Mysuru','Raichur','Ramanagara','Shivamogga','Tumakuru','Udupi','Uttara Kannada','Vijayapura','Yadgir'],
+            'State10': ['Alappuzha','Ernakulam','Idukki','Kannur','Kasaragod','Kollam','Kottayam','Kozhikode','Malappuram','Palakkad','Pathanamthitta','Thiruvananthapuram','Thrissur','Wayanad'],
+            'State11': ['Agar Malwa', 'Alirajpur', 'Anuppur','Ashoknagar','Balaghat', 'Barwani', 'Betul','Bhind','Bhopal','Burhanpur','Chachaura','Chhatarpur','Chhindwara','Damoh','Datia','Dewas','Dhar','Dindori','Guna','Gwalior','Harda','Hoshangabad','Indore','Jabalpur','Jhabua','Katni','Khandwa','Khargone','Mandla','Mandsaur','Morena','Narmadapuram','Narsinghpur','Neemuch','Niwari','Panna','Raisen','Rajgarh','Ratlam','Rewa','Sagar','Satna','Sehore','Seoni','Shahdol','Shajapur','Sheopur','Shivpuri','Sidhi','Singrauli','Tikamgarh','Ujjain','Umaria','Vidisha'],
+            'State12': ['Ahmednagar','Akola','Amravati','Aurangabad','Beed','Bhandara','Buldhana','Chandrapur','Dhule','Gadchiroli','Gondia','Hingoli','Jalgaon','Jalna','Kolhapur','Latur','Mumbai City','Mumbai Suburban','Nagpur','Nanded','Nandurbar','Nashik','Osmanabad','Palghar','Parbhani','Pune','Raigad','Ratnagiri','Sangli','Satara','Sindhudurg','Solapur','Thane','Wardha','Washim','Yavatmal'],
+            'State13': ['Angul','Balangir','Balasore','Bargarh','Bhadrak','Boudh','Cuttack','Deogarh','Dhenkanal','Gajapati','Ganjam','Jagatsinghpur','Jajpur','Jharsuguda','Kalahandi','Kandhamal','Kendrapara','Kendujhar','Khordha','Koraput','Malkangiri','Mayurbhanj','Nabarangpur','Nayagarh','Nuapada','Puri','Rayagada','Sambalpur','Subarnapur','Sundargarh'],
+            'State14': ['Amritsar','Barnala','Bathinda','Faridkot','Fatehgarh Sahib','Fazilka','Ferozepur','Gurdaspur','Hoshiarpur','Jalandhar','Kapurthala','Ludhiana','Mansa','Moga','Mohali','Muktsar','Pathankot','Patiala','Rupnagar','Sangrur','Shaheed Bhagat Singh Nagar','Tarn Taran'],
+            'State15': ['Ajmer','Alwar','Banswara','Baran','Barmer','Bharatpur','Bhilwara','Bikaner','Bundi','Chittorgarh','Churu','Dausa','Dholpur','Dungarpur','Hanumangarh','Jaipur','Jaisalmer','Jalore','Jhalawar','Jhunjhunu','Jodhpur','Karauli','Kota','Nagaur','Pali','Pratapgarh','Rajsamand','Sawai Madhopur','Sikar','Sirohi','Sri Ganganagar','Tonk','Udaipur']
+        };
+
+        function populateDistricts() {
+            const stateSelect = document.getElementById('state');
+            const districtSelect = document.getElementById('district');
+            const selectedState = stateSelect.value;
+
+            districtSelect.innerHTML = '<option value="">Select District</option>';
+            if (selectedState) {
+                const districtArray = districts[selectedState];
+                districtArray.forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
