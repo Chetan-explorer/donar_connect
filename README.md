@@ -3,8 +3,6 @@
 Donor Connect
 Donor Connect is a web-based platform designed to bridge the gap between blood donors, blood-required patients, blood banks, and organizations willing to conduct blood donation camps. Our mission is to simplify the process of connecting those in need of blood with potential donors and to create awareness for blood donation events hosted by companies and universities.
 
-🌟Our Project WebLink : https://donorlink.000webhostapp.com/
-
 🌟 Project Overview
 The shortage of blood can be a life-threatening issue. Our platform aims to address this by providing an easy-to-use interface for:
 
@@ -31,4 +29,3 @@ Backend:PHP
 
 Database:PhpMyadmin and xampp
 
-Hosting: ooowebhost
